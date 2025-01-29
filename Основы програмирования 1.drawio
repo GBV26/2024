@@ -1,25 +1,28 @@
-def print_odd_numbers_descending(a, b):
+# 3 вариант
+def print_odd_numbers_desc(a, b):
   """
   Выводит все нечетные числа от A до B включительно в порядке убывания.
 
   Args:
-    a: Первое целое число (должно быть больше b).
-    b: Второе целое число.
+    a: Целое число (начало диапазона), a > b.
+    b: Целое число (конец диапазона).
+
+  Raises:
+    ValueError: Если a <= b.
   """
 
   if a <= b:
-    print("Ошибка: A должно быть больше B.")
-    return
+    raise ValueError("A должно быть больше B.")
 
   for i in range(a, b - 1, -1):
     if i % 2 != 0:
-      print(i)
+      print(i, end=" ")
+  print()  # Переход на новую строку после вывода всех чисел
 
-# Пример использования
-a = 15
-b = 5
-print_odd_numbers_descending(a, b)  # Выведет: 15 13 11 9 7 5
-
-a = 10
-b = 2
-print_odd_numbers_descending(a,b) # Выведет: 9 7 5 3
+if __name__ == '__main__':
+    try:
+        a = int(input("Введите целое число A: "))
+        b = int(input("Введите целое число B: "))
+        print_odd_numbers_desc(a, b)
+    except ValueError as e:
+        print(f"Ошибка: {e}")
